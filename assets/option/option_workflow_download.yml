@@ -25,7 +25,13 @@ plugins:
       kwargs:
         username: ${JM_USERNAME}
         password: ${JM_PASSWORD}
-
+        
+ after_album:
+    - plugin: img2pdf
+      kwargs:
+        pdf_dir: ${JM_DOWNLOAD_DIR}/pdf/albums
+        filename_rule: Aname
+        
   after_download: # 全部下载完成以后
     - plugin: send_qq_email # 发送邮件，如果未配置下面的前3个环境变量则不会发送。
       kwargs:
